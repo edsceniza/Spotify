@@ -1,10 +1,18 @@
 package edna.ceniza.com.spotify
 
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import edna.ceniza.com.spotify.Song
+import edna.ceniza.com.spotify.R
 import android.widget.TextView
+import org.w3c.dom.Text
+import android.R.menu
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.view.*
+import android.view.ContextMenu.ContextMenuInfo
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import edna.ceniza.com.spotify.Fragment
 /**
  * Created by Edna Ceniza on 18/12/2017.
  */
@@ -23,7 +31,7 @@ class CustomAdapter(val songList: ArrayList<Song>): RecyclerView.Adapter<CustomA
                 }
                 if(songList.stat){
                     holder?.title.setTextColor(Color.parseColor("#fffff"));
-                    song.stat!=false
+                    songList.stat!=false
                 }
             }
         })
@@ -40,6 +48,7 @@ class CustomAdapter(val songList: ArrayList<Song>): RecyclerView.Adapter<CustomA
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val mLinear = itemView.findViewById<LinearLayout>(R.id.linearlayout) as LinearLayout
         val title = itemView.findViewById<TextView>(R.id.txtName)
         val singer = itemView.findViewById<TextView>(R.id.txtDesc2)
         val album = itemView.findViewById<TextView>(R.id.txtDesc)
